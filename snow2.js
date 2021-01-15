@@ -43,16 +43,16 @@ if (brightnessMap[thisMonth][0] <= thisHour && thisHour <= brightnessMap[thisMon
 
 
 // Snow Entity
-var snowEntity = "❄"; //"*"
+var snowEntity = "*";
 
 // Falling Velocity
 var snowSpeed = 0.75;
 
 // Minimum Flake Size
-var snowMinSize = 5;
+var snowMinSize = 12;
 
 // Maximum Flake Size
-var snowMaxSize = 50;
+var snowMaxSize = 64;
 
 // Refresh Rate (in milliseconds)
 var snowRefresh = 50;
