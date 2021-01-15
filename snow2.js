@@ -24,7 +24,7 @@ var brightnessMap = {
 
 // Snowflake Colours
 var snowColor = ["#654", "#543", "#432", "#321"]
-var snowColorBright = ["#AAA", "#BBB", "#CCC", "#DDD", "#EEE", "#FFF"];
+var snowColorBright = ["#FFF", "#BBB", "#CCC", "#DDD", "#EEE", "#FFF"];
 
 // Qualifiers
 var today = new Date();
@@ -33,7 +33,7 @@ var thisHour = today.getHours();
 
 // snow only in december - february
 if([0,1,11].includes(thisMonth)){
-	snowMax = 50;
+	snowMax = 60;
 }
 
 // full brightness during day:
@@ -43,16 +43,16 @@ if (brightnessMap[thisMonth][0] <= thisHour && thisHour <= brightnessMap[thisMon
 
 
 // Snow Entity
-var snowEntity = "*";
+var snowEntity = "❄"; //"*"
 
 // Falling Velocity
 var snowSpeed = 0.75;
 
 // Minimum Flake Size
-var snowMinSize = 12;
+var snowMinSize = 5;
 
 // Maximum Flake Size
-var snowMaxSize = 64;
+var snowMaxSize = 50;
 
 // Refresh Rate (in milliseconds)
 var snowRefresh = 50;
