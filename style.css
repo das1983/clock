@@ -1,0 +1,907 @@
+/* Break Points */
+html,
+body {
+  height: 100%;
+  background-color: #000;
+  margin: 0px;
+}
+.screen {
+  width: 100%;
+  height: 100%;
+  display: table;
+}
+.time-display {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+@media only screen and (max-width:3519px) {
+  .digit:not(:last-of-type) {
+    margin-right: 27px;
+  }
+  .digit {
+    width: 256px;
+    height: 646px;
+    display: block;
+    position: relative;
+    float: left;
+
+  }
+  .digit .segment {
+    background: #072205;
+    border-radius: 120px;
+    position: absolute;
+    z-index: 0;
+    transition: all 0.5s ease;
+  }
+  .digit .on {
+    background: #32ff20;
+  }
+  .digit .horizontal {
+    width: 210px;
+    height: 24px;
+  }
+  .digit .vertical {
+    width: 24px;
+    height: 306px;
+  }
+  .digit .a {
+    top: 0;
+    left: 24px;
+  }
+  .digit .a:before,
+  .digit .a:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 0;
+  }
+  .digit .a:before {
+    left: -9px;
+    /*border-left: 9px solid #000;
+    border-right: 9px solid transparent;
+    border-bottom: 18px solid #000;*/
+  }
+  .digit .a:after {
+    right: -9px;
+    border-right: 9px solid #000;
+    border-left: 9px solid transparent;
+    border-bottom: 18px solid #000;
+  }
+  .digit .b {
+    top: 18px;
+    right: 0;
+  }
+  .digit .b:before,
+  .digit .b:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: 0;
+  }
+  .digit .b:before {
+    top: -9px;
+    border-bottom: 9px solid transparent;
+    border-left: 18px solid #000;
+    border-top: 9px solid #000;
+  }
+  .digit .b:after {
+    bottom: -9px;
+    border-top: 9px solid transparent;
+    border-left: 18px solid #000;
+    border-bottom: 9px solid #000;
+  }
+  .digit .c {
+    top: 332px;
+    right: 0;
+  }
+  .digit .c:before,
+  .digit .c:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: 0;
+  }
+  .digit .c:before {
+    top: -9px;
+    border-bottom: 9px solid transparent;
+    border-left: 18px solid #000;
+    border-top: 9px solid #000;
+  }
+  .digit .c:after {
+    bottom: -9px;
+    border-top: 9px solid transparent;
+    border-left: 18px solid #000;
+    border-bottom: 9px solid #000;
+  }
+  .digit .d {
+    bottom: 0;
+    left: 18px;
+  }
+  .digit .d:before,
+  .digit .d:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 0;
+  }
+  .digit .d:before {
+    left: -9px;
+    border-left: 9px solid #000;
+    border-right: 9px solid transparent;
+    border-top: 18px solid #000;
+  }
+  .digit .d:after {
+    right: -9px;
+    border-right: 9px solid #000;
+    border-left: 9px solid transparent;
+    border-top: 18px solid #000;
+  }
+  .digit .e {
+    top: 332px;
+    left: 0;
+  }
+  .digit .e:before,
+  .digit .e:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: 0;
+  }
+  .digit .e:before {
+    top: -9px;
+    border-bottom: 9px solid transparent;
+    border-right: 18px solid #000;
+    border-top: 9px solid #000;
+  }
+  .digit .e:after {
+    bottom: -9px;
+    border-top: 9px solid transparent;
+    border-right: 18px solid #000;
+    border-bottom: 9px solid #000;
+  }
+  .digit .f {
+    top: 18px;
+    left: 0;
+  }
+  .digit .f:before,
+  .digit .f:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: 0;
+  }
+  .digit .f:before {
+    top: -9px;
+    border-bottom: 9px solid transparent;
+    border-right: 18px solid #000;
+    border-top: 9px solid #000;
+  }
+  .digit .f:after {
+    bottom: -9px;
+    border-top: 9px solid transparent;
+    border-right: 18px solid #000;
+    border-bottom: 9px solid #000;
+  }
+  .digit .g {
+    top: 314px;
+    left: 18px;
+  }
+  .digit .g:before,
+  .digit .g:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 0;
+  }
+  .digit .g:before {
+    left: 0;
+    border-right: 9px solid transparent;
+    border-top: 9px solid #000;
+    border-bottom: 9px solid #000;
+  }
+  .digit .g:after {
+    right: 0;
+    border-left: 9px solid transparent;
+    border-top: 9px solid #000;
+    border-bottom: 9px solid #000;
+  }
+  .hours,
+  .minutes,
+  .seconds {
+    display: inline-block;
+    overflow: auto;
+    text-align: center;
+  }
+  .separator {
+    width: 48px;
+    height: 506px;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    margin: 0 36px;
+  }
+  .separator .dot {
+    background: #071205;
+    width: 18px;
+    height: 18px;
+    border-radius: 8px;
+    transition: all 0.5s ease;
+    position: absolute;
+    left: 15px;
+  }
+  .separator .dot.on {
+    background: #32ff20;
+  }
+  .separator .dot:first-of-type {
+    top: 33%;
+  }
+  .separator .dot:last-of-type {
+    top: 66%;
+  }
+}
+@media only screen and (max-width:1289px) {
+  .digit:not(:last-of-type) {
+    margin-right: 92.5px;
+  }
+  .digit {
+    width: 220px;
+    height: 615px;
+    display: block;
+    position: relative;
+    float: left;
+  }
+  .digit .segment {
+    background: #440000;
+    border-radius: 28px;
+    position: absolute;
+    z-index: 0;
+    transition: all 0.5s ease;
+  }
+  .digit .segment.darker {
+    background: #111111;
+  }
+  .digit .segment.brighter {
+    background: #444444;
+  }
+  .digit .segment.on {
+    background: #777777;
+  }
+
+  .digit .segment.veryon {
+    background: #ffffff;
+  }
+  .digit .horizontal {
+    width: 190px;
+    height: 26px;
+  }
+  .digit .vertical {
+    width: 26px;
+    height: 266px;
+  }
+  .digit .a {
+    top: 0;
+    left: 15px;
+  }
+  .digit .a:before,
+  .digit .a:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 0;
+  }
+  .digit .a:before {
+    left: -8px;
+    border-right: 0px solid #f00;
+    border-left: 0px solid transparent;
+    border-bottom: 0px solid #f00;
+  }
+  .digit .a:after {
+    right: -8px;
+    border-right: 0px solid #f00;
+    border-left: 0px solid transparent;
+    border-bottom: 0px solid #f00;
+  }
+  .digit .b {
+    top: 25px;
+    right: 0;
+  }
+  .digit .b:before,
+  .digit .b:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: 0;
+  }
+  .digit .b:before {
+    top: -8px;
+    border-bottom: 0px solid transparent;
+    border-left: 0px solid #f00;
+    border-top: 0px solid #f00;
+  }
+  .digit .b:after {
+    bottom: -8px;
+    border-top: 0px solid transparent;
+    border-left: 0px solid #f00;
+    border-bottom: 0px solid #f00;
+  }
+  .digit .c {
+    top: 320px;
+    right: 0;
+  }
+  .digit .c:before,
+  .digit .c:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: 0;
+  }
+  .digit .c:before {
+    top: -8px;
+    border-bottom: 0px solid transparent;
+    border-left: 0px solid #000;
+    border-top: 0px solid #000;
+  }
+  .digit .c:after {
+    bottom: -8px;
+    border-top: 0px solid transparent;
+    border-left: 0px solid #000;
+    border-bottom: 0px solid #000;
+  }
+  .digit .d {
+    bottom: 2px;
+    left: 15px;
+  }
+  .digit .d:before,
+  .digit .d:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 0;
+  }
+  .digit .d:before {
+    left: -8px;
+    border-right: 1px solid #000;
+    border-left: 1px solid transparent;
+    border-bottom: 1px solid #000;
+  }
+  .digit .d:after {
+    right: -8px;
+    border-right: 1px solid #000;
+    border-left: 1px solid transparent;
+    border-bottom: 1px solid #000;
+  }
+  .digit .e {
+    top: 320px;
+    left: 0;
+  }
+  .digit .e:before,
+  .digit .e:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: 0;
+  }
+  .digit .e:before {
+    top: -8px;
+    border-bottom: 0px solid transparent;
+    border-right: 0px solid #000;
+    border-top: 0px solid #000;
+  }
+  .digit .e:after {
+    bottom: -8px;
+    border-top: 0px solid transparent;
+    border-right: 0px solid #000;
+    border-bottom: 0px solid #000;
+  }
+  .digit .f {
+    top: 25px;
+    left: 0;
+  }
+  .digit .f:before,
+  .digit .f:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: 0;
+  }
+  .digit .f:before {
+    top: -8px;
+    border-bottom: 0px solid transparent;
+    border-right: 0px solid #000;
+    border-top: 0px solid #000;
+  }
+  .digit .f:after {
+    bottom: -8px;
+    border-top: 0px solid transparent;
+    border-right: 0px solid #000;
+    border-bottom: 0px solid #000;
+  }
+  .digit .g {
+    top: 292px;
+    left: 15px;
+  }
+  .digit .g:before,
+  .digit .g:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 0;
+  }
+  .digit .g:before {
+    left: 0;
+    border-right: 0px solid #000;
+    border-left: 0px solid transparent;
+    border-bottom: 0px solid #000;
+  }
+  .digit .g:after {
+    right: 0;
+    border-right: 0px solid #000;
+    border-left: 0px solid transparent;
+    border-bottom: 0px solid #000;
+  }
+  .hours,
+  .minutes,
+  .seconds {
+    display: inline-block;
+    overflow: auto;
+    text-align: center;
+  }
+  .separator {
+    width: 15px;
+    height: 610px;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    margin: 0px 65px 0px 25px;
+  }
+  .separator .dot {
+    background: #111111;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    transition: all 0.5s ease;
+    position: absolute;
+  }
+
+  .separator .dot.brighter {
+    background: #444444;
+  }
+
+  .separator .dot.on {
+    background: #777777;
+  }
+  .separator .dot.veryon {
+    background: #ffffff;
+  }
+  .separator .dot:first-of-type {
+    top: 33%;
+  }
+  .separator .dot:last-of-type {
+    top: 66%;
+  }
+}
+@media only screen and (max-width:929px) {
+  .digit:not(:last-of-type) {
+    margin-right: 12px;
+  }
+  .digit {
+    width: 56px;
+    height: 104px;
+    display: block;
+    position: relative;
+    float: left;
+  }
+  .digit .segment {
+    background: #071205;
+    border-radius: 40px;
+    position: absolute;
+    z-index: 0;
+    transition: all 0.5s ease;
+  }
+  .digit .on {
+    background: #32ff20;
+  }
+  .digit .horizontal {
+    width: 40px;
+    height: 8px;
+  }
+  .digit .vertical {
+    width: 8px;
+    height: 40px;
+  }
+  .digit .a {
+    top: 0;
+    left: 8px;
+  }
+  .digit .a:before,
+  .digit .a:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 0;
+  }
+  .digit .a:before {
+    left: -4px;
+    border-left: 4px solid #000;
+    border-right: 4px solid transparent;
+    border-bottom: 8px solid #000;
+  }
+  .digit .a:after {
+    right: -4px;
+    border-right: 4px solid #000;
+    border-left: 4px solid transparent;
+    border-bottom: 8px solid #000;
+  }
+  .digit .b {
+    top: 8px;
+    right: 0;
+  }
+  .digit .b:before,
+  .digit .b:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: 0;
+  }
+  .digit .b:before {
+    top: -4px;
+    border-bottom: 4px solid transparent;
+    border-left: 8px solid #000;
+    border-top: 4px solid #000;
+  }
+  .digit .b:after {
+    bottom: -4px;
+    border-top: 4px solid transparent;
+    border-left: 8px solid #000;
+    border-bottom: 4px solid #000;
+  }
+  .digit .c {
+    top: 56px;
+    right: 0;
+  }
+  .digit .c:before,
+  .digit .c:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: 0;
+  }
+  .digit .c:before {
+    top: -4px;
+    border-bottom: 4px solid transparent;
+    border-left: 8px solid #000;
+    border-top: 4px solid #000;
+  }
+  .digit .c:after {
+    bottom: -4px;
+    border-top: 4px solid transparent;
+    border-left: 8px solid #000;
+    border-bottom: 4px solid #000;
+  }
+  .digit .d {
+    bottom: 0;
+    left: 8px;
+  }
+  .digit .d:before,
+  .digit .d:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 0;
+  }
+  .digit .d:before {
+    left: -4px;
+    border-left: 4px solid #000;
+    border-right: 4px solid transparent;
+    border-top: 8px solid #000;
+  }
+  .digit .d:after {
+    right: -4px;
+    border-right: 4px solid #000;
+    border-left: 4px solid transparent;
+    border-top: 8px solid #000;
+  }
+  .digit .e {
+    top: 56px;
+    left: 0;
+  }
+  .digit .e:before,
+  .digit .e:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: 0;
+  }
+  .digit .e:before {
+    top: -4px;
+    border-bottom: 4px solid transparent;
+    border-right: 8px solid #000;
+    border-top: 4px solid #000;
+  }
+  .digit .e:after {
+    bottom: -4px;
+    border-top: 4px solid transparent;
+    border-right: 8px solid #000;
+    border-bottom: 4px solid #000;
+  }
+  .digit .f {
+    top: 25px;
+    left: 0;
+  }
+  .digit .f:before,
+  .digit .f:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: 0;
+  }
+  .digit .f:before {
+    top: -4px;
+    border-bottom: 4px solid transparent;
+    border-right: 8px solid #000;
+    border-top: 4px solid #000;
+  }
+  .digit .f:after {
+    bottom: -4px;
+    border-top: 4px solid transparent;
+    border-right: 8px solid #000;
+    border-bottom: 4px solid #000;
+  }
+  .digit .g {
+    top: 48px;
+    left: 8px;
+  }
+  .digit .g:before,
+  .digit .g:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 0;
+  }
+  .digit .g:before {
+    left: 0;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #000;
+    border-bottom: 4px solid #000;
+  }
+  .digit .g:after {
+    right: 0;
+    border-left: 4px solid transparent;
+    border-top: 4px solid #000;
+    border-bottom: 4px solid #000;
+  }
+  .hours,
+  .minutes,
+  .seconds {
+    display: inline-block;
+    overflow: auto;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .separator {
+    width: 8px;
+    height: 104px;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    margin: 0 16px;
+    white-space: nowrap;
+  }
+  .separator .dot {
+    background: #071205;
+    width: 8px;
+    height: 8px;
+    border-radius: 8px;
+    transition: all 0.5s ease;
+    position: absolute;
+  }
+  .separator .dot.on {
+    background: #32ff20;
+  }
+  .separator .dot:first-of-type {
+    top: 33%;
+  }
+  .separator .dot:last-of-type {
+    top: 66%;
+  }
+}
+
+/*Material Card*/
+.m-card {
+  position: relative;
+  overflow: hidden;
+  margin: 3em auto 1em auto;
+  padding: 1em;
+  background-color: #fff;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  transition: all 0.25s ease;
+  max-width: 450px;
+  z-index: 1;
+}
+.m-card:hover {
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.m-card h1 {
+  border-bottom: 1px solid #311b92;
+}
+.m-card h1 #because {
+  font-size: 0.35em;
+  text-align: center;
+  display: block;
+  margin-bottom: 0.5em;
+  font-weight: 300;
+}
+.m-card #logo {
+  max-width: 300px;
+  margin: 0 auto;
+  display: block;
+}
+.m-card h5 {
+  margin: 0.5em 0 0.7em;
+}
+.m-card #file-upload-container {
+  cursor: pointer;
+  border: 3px dashed #311b92;
+  display: block;
+  width: 100%;
+  height: 200px;
+  border-radius: 25px;
+  text-align: center;
+}
+.m-card #file-upload-container input {
+  display: none;
+}
+.m-card #file-upload-container #add-symbol {
+  display: block;
+  margin: 0 auto;
+  height: 70%;
+  fill: #616161;
+  max-width: 40px;
+}
+.m-card #file-upload-container #add-symbol:hover {
+  fill: #311b92;
+}
+.m-card #file-upload-container #file-name {
+  display: block;
+  margin: 0 auto;
+  color: #616161;
+  max-width: 90%;
+  word-break: break-all;
+}
+.m-card #file-upload-container .file-added {
+  color: #212121 !important;
+}
+.m-card #file-upload-container:hover #add-symbol {
+  fill: #311b92;
+}
+.m-card button {
+  width: 100%;
+  padding-top: 1.3em;
+}
+.m-card button #upload-symbol {
+  fill: #311b92;
+  transition: all 0.25s ease;
+  max-width: 36px;
+  max-height: 36px;
+  display: inline;
+  vertical-align: middle;
+  margin-top: -4px;
+}
+.m-card button span {
+  display: inline-block;
+}
+.m-card button:hover #upload-symbol {
+  fill: #fff;
+}
+.m-card button:hover #upload-symbol #arrow {
+  top: -12px;
+}
+.m-card button.disabled {
+  pointer-events: none;
+  cursor: default;
+  color: #616161;
+  border-color: #616161;
+  background: #eeeeee;
+}
+.m-card button.disabled #upload-symbol {
+  fill: #616161;
+}
+.m-card .how-to {
+  display: block;
+  text-align: center;
+  width: 100%;
+  margin-top: 1em;
+  padding: 0.75em 0;
+  font-weight: 300;
+  transition: all 0.25s ease;
+}
+.m-card .how-to:hover {
+  transform: scale(1.2);
+}
+.m-card #how-to {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 0!important;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  z-index: 3;
+  padding: 1em;
+  display: none;
+}
+.m-card #how-to h3 {
+  border-bottom: 1px solid #212121;
+  padding-bottom: 0.25em;
+}
+.m-card #how-to #close {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+}
+.m-card #how-to #close #close-symbol {
+  transform: rotate(45deg);
+  max-width: 20px;
+  max-height: 20px;
+  fill: #616161;
+}
+.m-card #how-to #close:hover #close-symbol {
+  fill: #311b92;
+}
+.m-card .step {
+  float: left;
+  width: 100%;
+}
+.m-card .step img {
+  max-width: 120px;
+  display: block;
+  float: left;
+  margin-right: 0.5em;
+  border: 1px solid #212121;
+}
+.m-card .step h6 {
+  margin-bottom: 0.5em;
+}
+.m-card #upload-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  z-index: 4;
+  padding: 1em;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.m-card #upload-animation h3 {
+  margin-bottom: 0px;
+}
+.m-card #upload-animation.show {
+  opacity: 1;
+}
