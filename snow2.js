@@ -23,7 +23,7 @@ var brightnessMap = {
 }
 
 // Snowflake Colours
-var snowColor = ["#888", "#777", "#666", "#555", "#444", "#333"]
+var snowColor = ["#666", "#555", "#444", "#333"]
 var snowColorBright = ["#AAA", "#BBB", "#CCC", "#DDD", "#EEE", "#FFF"];
 
 // Qualifiers
