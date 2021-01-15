@@ -41,7 +41,7 @@ body {
     background: #444444;
   }
   .digit .segment.on {
-    background: #777777;
+    background: #555555;
   }
 
   .digit .segment.veryon {
@@ -252,7 +252,7 @@ body {
   }
 
   .separator .dot.on {
-    background: #777777;
+    background: #555555;
   }
   .separator .dot.veryon {
     background: #ffffff;
