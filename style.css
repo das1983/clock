@@ -35,13 +35,13 @@ body {
     transition: all 0.5s ease;
   }
   .digit .segment.darker {
-    background: #111111;
+    background: #110600;
   }
   .digit .segment.brighter {
     background: #444444;
   }
   .digit .segment.on {
-    background: #555555;
+    background: #554433;
   }
 
   .digit .segment.veryon {
@@ -239,7 +239,7 @@ body {
     margin: 0px 65px 0px 25px;
   }
   .separator .dot {
-    background: #111111;
+    background: #110600;
     width: 30px;
     height: 30px;
     border-radius: 15px;
@@ -252,7 +252,7 @@ body {
   }
 
   .separator .dot.on {
-    background: #555555;
+    background: #554433;
   }
   .separator .dot.veryon {
     background: #ffffff;
