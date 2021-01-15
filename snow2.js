@@ -19,7 +19,7 @@ var brightnessMap = {
 	8:[6,20],
 	9:[7,19],
 	10:[8,16],
-	11:[9,15]
+	11:[9,16]
 }
 
 // Snowflake Colours
