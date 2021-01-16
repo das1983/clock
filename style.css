@@ -38,14 +38,14 @@ body {
     background: #110600;
   }
   .digit .segment.brighter {
-    background: #444444;
+    background: #302822;
   }
   .digit .segment.on {
     background: #554433;
   }
 
   .digit .segment.veryon {
-    background: #ffffff;
+    background: #fff8eb;
   }
   .digit .horizontal {
     width: 190px;
@@ -248,14 +248,14 @@ body {
   }
 
   .separator .dot.brighter {
-    background: #444444;
+    background: #302822;
   }
 
   .separator .dot.on {
     background: #554433;
   }
   .separator .dot.veryon {
-    background: #ffffff;
+    background: #fff8eb;
   }
   .separator .dot:first-of-type {
     top: 33%;
