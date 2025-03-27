@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<body onload="startTime()">
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600&display=swap');
+
+body{
+  background: #000;
+  min-height: 100vh; /* ensures body takes full viewport height */
+  width: 95vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clock{
+  color: #88CCFF;
+  position: relative; /* changed from absolute */
+  font-family: 'Orbitron', sans-serif;
+  font-size: 10rem;
+  letter-spacing: 1rem;
+  font-weight: bold;
+  top: 0px;
+  left: 0px;
+}
+</style>
+
+<div class="clock" id="txt"></div>
+
+<script>
+function startTime() {
+  const today = new Date();
+  let h = today.getHours();
+  let m = today.getMinutes();
+  let s = today.getSeconds();
+  m = checkTime(m);
+  s = checkTime(s);
+  document.getElementById('txt').innerHTML =  h + ":" + m + ":" + s;
+  // Generate random numbers between 1 and 10 for both x and y
+  let randomX = Math.floor(Math.random() * 10) + 10;
+  let randomY = Math.floor(Math.random() * 10) + 1;
+
+  // Set the new position using style properties
+  document.getElementById('txt').style.left = randomX + "px";
+  document.getElementById('txt').style.top = randomY + "px";
+  setTimeout(startTime, 1000);
+}
+
+function checkTime(i) {
+  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+  return i;
+}
+</script>
+
+</body>
+</html>
