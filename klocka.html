@@ -16,22 +16,50 @@ body{
   align-items: center;
 }
 
+.clock-container {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .clock{
   color: #88CCFF;
-  position: relative; /* changed from absolute */
   font-family: 'Orbitron', sans-serif;
   font-size: 10rem;
   letter-spacing: 1rem;
   font-weight: bold;
-  top: 0px;
-  left: 0px;
-  transform: scaleY(1.5);
+  transform: scaleY(1.3);
+}
+
+.date-display {
+  color: #88CCFF;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem;
+  letter-spacing: 0.25rem;
+  font-weight: bold;
+  margin-bottom: 0.1rem;
+  transform: scaleY(1.3);
 }
 </style>
 
-<div class="clock" id="txt"></div>
+<div class="clock-container" id="container">
+  <div class="date-display" id="dateDisplay"></div>
+  <div class="clock" id="txt"></div>
+</div>
 
 <script>
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Okt','Nov','Dec'];
+const DAYS = ['ssöndag','måndag','tisdag','onsdag','torsdag','fredag','lördag'];
+
+function getWeekNumber(d) {
+  const date = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+  const dayNum = date.getUTCDay() || 7;
+  date.setUTCDate(date.getUTCDate() + 4 - dayNum);
+  const yearStart = new Date(Date.UTC(date.getUTCFullYear(), 0, 1));
+  return Math.ceil((((date - yearStart) / 86400000) + 1) / 7);
+}
+
 function startTime() {
   const today = new Date();
   let h = today.getHours();
@@ -39,14 +67,39 @@ function startTime() {
   let s = today.getSeconds();
   m = checkTime(m);
   s = checkTime(s);
-  document.getElementById('txt').innerHTML =  h + ":" + m + ":" + s;
+  document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
+
+  const day = today.getDate();
+  const monthIndex = today.getMonth() + 1;
+  const specialMessages = {
+    "11-9":  "Teodor namnsdag!",
+    "7-12":  "Eldar namnsdag!",
+    "1-5":   "Hanna namnsdag!",
+    "10-15": "Hedwig namnsdag!",
+    "2-28":  "Maria namnsdag!"
+  };
+  const specialKey = monthIndex + "-" + day;
+  const specialMessage = specialMessages[specialKey];
+
+  let dateText;
+  if (specialMessage) {
+    dateText = specialMessage;
+  } else {
+    const weekday = DAYS[today.getDay()];
+    const month = MONTHS[today.getMonth()];
+    const week = getWeekNumber(today);
+    dateText = weekday + " " + day + " " + month + " v" + week;
+  }
+  document.getElementById('dateDisplay').innerHTML = dateText;
+
   // Generate random numbers between 1 and 10 for both x and y
   let randomX = Math.floor(Math.random() * 10) + 30;
   let randomY = Math.floor(Math.random() * 10) + 1;
 
   // Set the new position using style properties
-  document.getElementById('txt').style.left = randomX + "px";
-  document.getElementById('txt').style.top = randomY + "px";
+  const container = document.getElementById('container');
+  container.style.left = randomX + "px";
+  container.style.top = randomY + "px";
   setTimeout(startTime, 1000);
 }
 
