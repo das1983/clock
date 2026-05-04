@@ -49,8 +49,29 @@ body{
 </div>
 
 <script>
-const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Okt','Nov','Dec'];
-const DAYS = ['ssöndag','måndag','tisdag','onsdag','torsdag','fredag','lördag'];
+const MONTHS = ['Jan','Feb','Mar','Apr','Maj','Jun','Jul','Aug','Sep','Okt','Nov','Dec'];
+const DAYS = ['söndag','måndag','tisdag','onsdag','torsdag','fredag','lördag'];
+
+let currentTemp = null;
+
+async function fetchTemperature() {
+  const API_URL = 'https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=59.3326&lon=18.0649';
+  try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 10000);
+    const response = await fetch(API_URL, { signal: controller.signal });
+    clearTimeout(timer);
+    if (!response.ok) throw new Error('HTTP ' + response.status);
+    const data = await response.json();
+    currentTemp = data.properties.timeseries[0].data.instant.details.air_temperature;
+  } catch (e) {
+    // keep previous value on error
+  }
+  // refresh every ~60 min with a small random offset
+  setTimeout(fetchTemperature, 60 * 60 * 1000 + Math.random() * 5 * 60 * 1000);
+}
+
+fetchTemperature();
 
 function getWeekNumber(d) {
   const date = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
@@ -88,7 +109,8 @@ function startTime() {
     const weekday = DAYS[today.getDay()];
     const month = MONTHS[today.getMonth()];
     const week = getWeekNumber(today);
-    dateText = weekday + " " + day + " " + month + " v" + week;
+    const tempStr = currentTemp !== null ? ' | ' + currentTemp + ' °C' : '';
+    dateText = weekday + " " + day + " " + month + " v" + week + tempStr;
   }
   document.getElementById('dateDisplay').innerHTML = dateText;
 
